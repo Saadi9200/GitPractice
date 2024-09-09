@@ -1,0 +1,754 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My Online Bookstore</title>
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        .title {
+            font-family: Arial;
+            text-align: center;
+            font-size: 60px;
+            color: white;
+        }
+
+
+        .librarypic {
+            width: 100%;
+            height: 400px;
+            background-image: url('https://th.bing.com/th/id/R.62e8d40208d75b56afdb542f4523ed5d?rik=jNst8kDglUKHEw&riu=http%3a%2f%2fcarnetslibres.com%2fwp-content%2fuploads%2f2015%2f02%2fLibraries-Reading-Wallpapers-books-to-read-28317155-2560-1600-1024x640.jpg&ehk=xN0PZRDEqjWsuopL9oG0Id8KvlcOWUFxNVG0ISM1fKE%3d&risl=&pid=ImgRaw&r=0');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        .searchbar{
+            float: right;
+            margin-right: 2px;
+        }
+    
+.book{
+    max-width: 500px; 
+            margin: auto;
+            padding: 20px;
+            border: 2px solid #333; 
+            border-radius: 10px; 
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); 
+            background-color: white; 
+            text-align: center; 
+            margin-bottom: 30px;
+}
+
+.book img {
+                max-width: 50%;
+                height: auto;
+                border-radius: 10px; 
+                margin-bottom: 20px; 
+            }
+
+            .book table {
+                width: 100%;
+                border-collapse: collapse; 
+                margin: auto;
+                font-family: Georgia;
+            }
+
+            .book th, .book td {
+                padding: 10px;
+                border: 1px solid #ccc;
+                text-align: left;
+                font-family: Georgia;
+            }
+
+            .book th {
+                background-color: black;
+                color: white;
+                font-family: Georgia;
+            }
+
+            .load-more {
+                 background-color: black;
+                  color: white;
+                padding: 10px 20px; 
+                border: none;
+                border-radius: 5px; 
+                cursor: pointer;
+                 transition: background-color 0.3s ease;
+                margin-top: 10px;
+                width: 100%; 
+                text-align: center;
+                
+                
+}
+
+.load-more:hover {
+    background-color: #696969;
+    color: black;
+}
+
+        
+
+        body {
+            padding: 30px;
+            background-color: #f2f2f2; 
+        }
+
+       
+        .Nav {
+            background-color: black;
+            overflow: hidden;
+        }
+
+          
+            .Nav a {
+                float: left;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+                font-family: Georgia;
+            }
+
+
+
+
+                .Nav a:hover {
+                    background-color: #696969;
+                    color: black;
+                }
+
+        form {
+            max-width: 400px;
+            margin: auto;
+            padding: 40px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333; 
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="message"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px; 
+            box-sizing: border-box; 
+            font-family: Georgia;
+        }
+
+        .contact {
+            text-align: center;
+            font-family: Arial;
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+
+        input[type="submit"] {
+            background-color: black;
+            color: white;
+            padding: 10px 20px; 
+            border: none;
+            border-radius: 5px; 
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+            width: 100%; 
+        }
+
+            input[type="submit"]:hover {
+                background-color: #696969;
+                color: black;
+            }
+
+        .reviews {
+            font-family: Arial;
+            font-size: 20px;
+            text-align: center;
+            color: #333;
+            background-color: #f2f2f2;
+        }
+
+
+        .fbooks {
+            font-family: Arial;
+            font-size: 20px;
+            text-align: center;
+            color: #333;
+            background-color: #f2f2f2;
+        }
+
+        .about {
+            font-family: Arial;
+            font-size: 20px;
+            text-align: center;
+            color: #333;
+            background-color: #f2f2f2;
+        }
+
+
+        .box {
+            max-width: 600px; 
+            margin: auto;
+            padding: 20px;
+            border: 2px solid #333; 
+            border-radius: 10px; 
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); 
+            background-color: white; 
+            text-align: center; 
+            margin-bottom: 30px;
+        }
+
+            .box img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 10px; 
+                margin-bottom: 20px; 
+            }
+
+            .box table {
+                width: 100%;
+                border-collapse: collapse; 
+                margin: auto;
+                font-family: Georgia;
+            }
+
+            .box th, .box td {
+                padding: 10px;
+                border: 1px solid #ccc;
+                text-align: left;
+                font-family: Georgia;
+            }
+
+            .box th {
+                background-color: black;
+                color: white;
+                font-family: Georgia;
+            }
+        .box2 {
+            max-width: 600px; 
+            margin: auto;
+            padding: 20px;
+            border: 2px solid #333; 
+            border-radius: 10px; 
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); 
+            background-color: white; 
+            text-align: center; 
+            margin-bottom: 30px;
+        }
+
+            .box2 img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 10px; 
+                margin-bottom: 20px; 
+            }
+
+            .box2 table {
+                width: 100%;
+                border-collapse: collapse; 
+                margin: auto;
+                font-family: Georgia;
+            }
+
+            .box2 th, .box2 td {
+                padding: 10px;
+                border: 1px solid #ccc;
+                text-align: left;
+                font-family: Georgia;
+            }
+
+            .box2 th {
+                background-color: black;
+                color: white;
+                font-family: Georgia;
+            }
+
+        .Customer {
+            font-family: Georgia;
+        }
+
+        .aboutustext {
+            text-align: justify;
+            text-align-last: center;
+            margin: 0 auto;
+            max-width: 600px;
+        }
+
+        .Anna {
+            background-color: white;
+            text-align: center;
+            border: 2px solid white; 
+            border-radius: 5px; 
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.4); 
+            background-color: white; 
+            text-align: center; 
+        }
+
+        .Michael {
+            background-color: white;
+            text-align: center;
+            border: 2px solid white; 
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.4); 
+            background-color: white;
+            text-align: center; 
+        
+        }
+
+        .Sarah {
+            background-color: white;
+            text-align: center;
+            border: 2px solid white;
+            border-radius: 5px; 
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.4); 
+            background-color: white; 
+            text-align: center; 
+        
+        }
+
+        .David {
+            background-color: white;
+            text-align: center;
+            border: 2px solid white; 
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.4); 
+            background-color: white; 
+            text-align: center; 
+        
+        }
+
+        .Emily {
+            background-color: white;
+            margin-bottom: 30px;
+            text-align: center;
+            border: 2px solid white; 
+            border-radius: 5px; 
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.4); 
+            background-color: white; 
+            text-align: center;
+        
+        }
+
+        .box2p2 {
+            text-align: justify;
+            text-align-last: center;
+            font-family: Georgia;
+        }
+
+        .box1p1 {
+            text-align: justify;
+            text-align-last: center;
+            font-family: Georgia;
+        }
+       
+        label[for="updates"] {
+            font-size: 13px; 
+            color: #333;
+            margin-right: 10px; 
+            font-family: Georgia;
+        }
+
+       
+        input[type="checkbox"] {
+            width: 16px; 
+            height: 16px;
+            cursor: pointer; 
+            margin: 0 10px 0 0; 
+            font-family: Georgia;
+            -webkit-appearance: none; 
+            -moz-appearance: none; 
+            appearance: none; 
+            background-color: #fff; 
+            border: 1px solid #ccc; 
+            border-radius: 4px; 
+            outline: none; 
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+           
+            input[type="checkbox"]:checked {
+                background-color: white; 
+                border-color: #333; 
+            }
+
+                input[type="checkbox"]:checked::before {
+                    content: '✔'; 
+                    display: block;
+                    text-align: center; 
+                    color: black; 
+                    font-size: 12px; 
+                    line-height: 16px; 
+                }
+
+        .heading1 {background-color: white;
+        }
+        .heading {
+            height: 5px; 
+            background-color: black; 
+        }
+        .queries{
+            font-family:Arial;
+            text-align: center
+        }
+       .checkboxx {
+            display: flex;
+            align-items: center; /* Center align items vertically */
+        }
+
+        .checkboxx input {
+            margin-right: 8px; /* Space between checkbox and label */
+            margin-bottom:6px;
+        }
+
+
+        .book-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            
+        }
+
+            .book-table th,
+            .book-table td {
+                padding: 12px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .book-table th {
+                background-color: black;
+                color: white;
+            }
+
+            .book-table tr:hover {
+                background-color: #696969;
+            }
+
+            .book-table td {
+                color: black;
+            }
+            .Booklist{
+                font-family: Georgia;
+                text-align: center;
+            }
+
+
+        footer {
+            font-family: Arial;
+            text-align: center;
+            padding: 3px;
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!DOCTYPE html>
+    <html>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>My Online Bookstore</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body class="Main">
+        <div class="librarypic">
+        <h1 class="title">Welcome to My Online Bookstore  </h1>
+        
+            </div> 
+        <div class="Nav">
+            <a class="Home" href="#home">Home</a>
+            <a class="Books" href="#books">Books</a>
+            <a class="About" href="#about">About</a>
+            <a class="Contact" href="#contact">Contact</a>
+            
+            <div class="searchbar">
+            <input type="text" id="searchBox" class="Search"  placeholder="Search for Books"> 
+         
+        </div>
+        </div>
+        <br>
+        <section>
+            <div id="searchResults"></div>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script type="module">
+        import books from './web.js';
+        
+        $(document).ready(function() {
+            $('#searchBox').on('input', function() {
+                let searchQuery = $(this).val().toLowerCase();
+                let filteredBooks = books.filter(book => 
+                    book.title.toLowerCase().includes(searchQuery) || 
+                    book.author.toLowerCase().includes(searchQuery)
+                );
+        
+                $('#searchResults').empty();
+        
+                if (filteredBooks.length > 0) {
+                    filteredBooks.forEach(book => {
+                        $('#searchResults').append(
+                            `<div class="book">
+                                <img src="${book.imageSource}" alt="${book.title}">
+                                 <p>${book.description}</p>
+
+                                <table>
+                                    <tr>
+                                        <th>Title</th>
+                                        <td>${book.title}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Author</th>
+                                        <td>${book.author}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Price</th>
+                                        <td>${book.price}</td>
+                                    </tr>
+                                </table>
+                            </div>`
+                        );
+                    });
+                } else {
+                    $('#searchResults').append('<p>No books found.</p>');
+                }
+            });
+            });
+           
+           
+    </script>
+
+
+            <hr class="heading" />
+            <h2 class="fbooks"> Featured Books</h2>
+            <hr class="heading"/>
+            <div class="box">
+                <img src="https://th.bing.com/th/id/R.f265c385668859ab4fb997091e845b71?rik=e%2fMuJ2yykxdTsA&riu=http%3a%2f%2fprodimage.images-bn.com%2fpimages%2f9780143125044_p0_v1_s550x406.jpg&ehk=ioXaJmzU7OHqOycuen8Ft%2fH%2bPJPLirNsiJ3oslygNsg%3d&risl=&pid=ImgRaw&r=0" alt="Book Cover" />
+                <p class="box1p1">
+                    "Honor" by Elif Shafak is a poignant tale that examines the clash between tradition and modernity through the lives of a Turkish-Kurdish family.<br>The novel delves into themes of love, betrayal, and the quest for identity, painting a vivid picture of the cultural and generational tensions that shape the characters' destinies.
+
+
+                </p>
+                <table class="table1">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Honor</td>
+                            <td>Elif Shafak</td>
+                            <td>PKR 1000/.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            </tbody>
+            </table>
+            <div class="box2">
+                <img src="https://i.pinimg.com/originals/85/83/db/8583dbb5d2e404e3f8a609140dfca648.jpg" alt="Book Cover2" />
+                <p class="box2p2">"The Gaze" by Elif Shafak explores the complexities of beauty and perception through the intertwined lives of its characters.<br>The novel delves into how society's gaze shapes identities and relationships, offering a profound commentary on the nature of looking and being seen.</p>
+                <table class="table2">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>The Gaze</td>
+                            <td>Elif Shafak</td>
+                            <td>PKR 1500/.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+             
+           
+         
+    
+
+</section>
+
+
+        </section>
+
+        <section>
+            <hr class="heading" /> <h2 class="about">About Us</h2> <hr class="heading" />
+
+            <br />
+            <p class="aboutustext"><b></b>At My Online Bookstore, we believe in the magic of reading. Our mission is to provide book lovers with a wide range of books across various genres, ensuring there's something for everyone. From fiction to non-fiction, romance to mystery, and everything in between, our curated selection is designed to inspire, educate, and entertain.</p>
+
+            <p class="aboutustext"><b></b>We pride ourselves on excellent customer service and fast, reliable delivery. Our team is passionate about books and is always here to help you find exactly what you're looking for.</p>
+
+            <br>
+        </section>
+        <section>
+            <hr class="heading" />
+            <h2 class="reviews">
+                Customer Reviews
+            </h2> <hr class="heading" />
+            <p class="reviewstext">
+            <p class="Anna">
+                <b>Anna J.</b><br>
+                "I found exactly what I was looking for! The selection is incredible, and the delivery was super fast. I'll definitely be ordering again."
+            </p>
+            <p class="Michael">
+                <b>Michael T.</b><br>
+                "The customer service here is outstanding. They helped me find a rare book I've been searching for years. Highly recommend this bookstore."
+            </p>
+            <p class="Sarah">
+                <b>Sarah L.</b><br>
+                "A great place to discover new authors and titles. The website is easy to navigate, and the prices are very reasonable."
+            </p>
+            <p class="David">
+                <b>David M.</b><br>
+                "I love the featured books section. I've found some real gems thanks to their recommendations. Keep up the great work!"
+            </p>
+            <p class="Emily">
+                <b>Emily R.</b><br>
+                "The convenience of shopping online combined with the charm of a local bookstore. Excellent selection and service!"
+            </p></p>
+
+          
+            <hr class="heading" />
+        </section>
+        <section>
+            <h2 class="Booklist">Book List</h2>
+            <hr class="heading" />
+            <table class="book-table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Author Name</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody id="bookList">
+                    <tr>
+                        <td>The Forty Rules of Love</td>
+                        <td>Elif Shafak</td>
+                        <td>PKR 1700/.</td>
+                    </tr>
+                    <tr>
+                        <td>The Kite Runner</td>
+                        <td>Khaled Hosseini. </td>
+                        <td>PKR 2000/.</td>
+                    </tr>
+                    <tr>
+                        <td>Harry Potter Series 1</td>
+                        <td>J.K. Rowling</td>
+                        <td>PKR 1000/.</td>
+                    </tr>
+                    <tr>
+                        <td>Percy Jackson & the Olympians</td>
+                        <td>Rick Riordan</td>
+                        <td>PKR 2500/.</td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+
+            <button id="loadMore" class="load-more">Load More</button>
+            <script type="module">
+                import books from './web.js';
+                
+                $(document).ready(function() {
+                    let currentIndex = 0;
+                    const booksToLoad = 2;
+                
+                    $('#loadMore').on('click', function() {
+                        loadMoreBooks();
+                    });
+                
+                    function loadMoreBooks() {
+                        const booksList = $('#bookList');
+                        if (currentIndex < books.length) {
+                            for (let i = 0; i < booksToLoad && currentIndex < books.length; i++) {
+                                const book = books[currentIndex];
+                                const newRow = `
+                                    <tr>
+                                        <td>${book.title}</td>
+                                        <td>${book.author}</td>
+                                        <td>${book.price}</td>
+                                    </tr>
+                                `;
+                                booksList.append(newRow);
+                                currentIndex++;
+                            }
+                        } else {
+                            $('#loadMore').prop('disabled', true).text('No more books to load');
+                        }
+                    }
+                });
+            </script>
+
+
+            <hr class="heading" />
+
+
+
+        </section>
+
+          <section>
+            <h2 class="queries">Any Query? Let us know!</h2>
+            <br />
+
+            <form action="submit_form.php" method="post">
+                <h2 class="contact">Contact us</h2>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br>
+
+                <label for="message">Message:</label>
+                <input type="message" id="message" name="message" required><br>
+                <div class="checkboxx">
+                    <input type="checkbox" value="Save information for updates">
+                    <label for="checkbox">Get Future Updates</label>
+                </div>
+               
+              
+
+
+                <input type="submit" value="Submit">
+
+
+</section>
+        <footer>
+
+
+            <p>&copy; 2024 My Online Bookstore</p>
+        </footer>
+        
+    
+    </body>
+</html>
